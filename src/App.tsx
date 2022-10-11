@@ -8,6 +8,7 @@ import { GameBanner } from "./components/GameBanner";
 import { CreateAdBanner } from "./components/CreateAdBanner";
 
 import { CreateAdModal } from "./components/CreateAModal";
+import axios from "axios";
 
 const baseUrl = "http://localhost:3333";
 
@@ -23,11 +24,9 @@ interface Game {
 function App() {
   const [game, setGame] = useState<Game[]>([]);
   useEffect(() => {
-    fetch(`${baseUrl}/games`)
-      .then((res) => res.json())
-      .then((data) => {
-        setGame(data);
-      });
+    axios(`${baseUrl}/games`).then((res) => {
+      setGame(res.data);
+    });
   }, []);
 
   return (
