@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import * as Dialog from "@radix-ui/react-dialog";
 
 import "./styles/main.css";
 
 import logoImg from "./assets/logo.svg";
 import { GameBanner } from "./components/GameBanner";
 import { CreateAdBanner } from "./components/CreateAdBanner";
+
+import { CreateAdModal } from "./components/CreateAModal";
 
 const baseUrl = "http://localhost:3333";
 
@@ -48,8 +50,11 @@ function App() {
           );
         })}
       </div>
+      <Dialog.Root>
+        <CreateAdBanner />
 
-      <CreateAdBanner />
+        <CreateAdModal />
+      </Dialog.Root>
     </div>
   );
 }
